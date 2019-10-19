@@ -1,20 +1,28 @@
 import csv
 
 class Extract:
-    def __init__(self, longitude, latitude, maxMag, date):
-        self.date = date
+    def __init__(self, longitude, latitude, locname):
         self.longtitude = longitude
         self.latitude = latitude
-        self.maxMag = maxMag
+        self.locname = locname
 
-def main():
-    input_file_list = fileopen_csv("dataset1.csv")
-    print(input_file_list)
+    def get_location(self, longitude, latitude, locname):
+        return (longitude, latitude, locname)
 
 def num_sites(n):
     if n <= 4:
         return 1
     return num_sites(n - 4) + 1
+
+def day(n):
+    if (n < 24):
+        return 1
+    return 1 + day(n - 24)
+
+def hour(n):
+    if (n < 24):
+        return n
+    return hour(n - 24)
 
 def fileopen_csv(filename):
     input_csvfile = csv.reader(open(filename, "r"))
@@ -28,13 +36,13 @@ def fileopen_csv(filename):
     row_count = 0
     element_count = 0
     for row in input_csvfile:
-        row_count += 1
         for element in row:            
-            if element == "" or row_count <= 4 or "-" in element:
+            if element == "" or row_count < 3 or "-" in element:
                 continue
             else:
-                temp_data[element_count].append(element)
+                temp_data[element_count].append(float(element))
                 element_count += 1
+        row_count += 1
         element_count = 0
     return temp_data
 
