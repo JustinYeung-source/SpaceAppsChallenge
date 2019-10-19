@@ -35,10 +35,11 @@ def file_interpret_csv(filename):
                 continue
             else:
                 
-                temp_data[element_count].append(element)
+                temp_data[element_count].append(float(element))
                 element_count += 1
         element_count = 0
 
     return temp_data
 
 
+print(file_interpret_csv('dataset2_full.csv'))

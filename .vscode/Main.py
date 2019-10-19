@@ -1,7 +1,9 @@
-import csv
 from GeoMagneticData import *
+import DataHandler
 
-def getFile(fileName):
-    file = csv.reader(fileName)
+def main():
+    pass
 
-    
+if __name__ == "__main__":
+    main()
+
