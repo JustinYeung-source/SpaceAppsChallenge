@@ -31,7 +31,7 @@ def fileopen_csv(filename):
     element_count = 0
     for row in input_csvfile:
         for element in row: 
-            if element == "" or row_count < 3 or "-" in element:
+            if element == "" or row_count < 2 or "-" in element:
                 continue
             else:
                 temp_data[element_count].append(float(element))
@@ -67,6 +67,7 @@ def fileopen_csv(filename):
                 # add statistical values to the class
                 geo_class_list[num_index].add(temp_data[num_index][i])
             num_index += 1
+
     return geo_class_list
 
 if __name__ == "__main__":
