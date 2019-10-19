@@ -1,45 +1,42 @@
 import csv
-'''
-This file just reads the csv file contents and organizes it into nested lists
-'''
+
 class Extract:
-    def __init__(self, location_name, location, longitude, latitude):
+    def __init__(self, longitude, latitude, maxMag, date):
+        self.date = date
         self.longtitude = longitude
         self.latitude = latitude
-        self.longtitude = longitude
-        self.location_name = location_name
-        self.location = ()
-    
-    def get_location(self, longitude, latitude):
-        self.location = (location_name,longitude,latitude)
+        self.maxMag = maxMag
+
+def main():
+    input_file_list = fileopen_csv("dataset1.csv")
+    print(input_file_list)
 
 def num_sites(n):
     if n <= 4:
         return 1
     return num_sites(n - 4) + 1
 
-def file_interpret_csv(filename):  
+def fileopen_csv(filename):
     input_csvfile = csv.reader(open(filename, "r"))
-    row1 = next(input_csvfile)
 
+    #remove the first 5 columns (1), read the amount of max(db/dt), that's our amount of lists
+    row1 = next(input_csvfile)
     temp_data = [[] for _ in range(num_sites(len(row1) - 5))]
 
+    #iterate through the list, removing elements that don't match the criteria and adding them to their
+    #respective list
     row_count = 0
     element_count = 0
-
     for row in input_csvfile:
         row_count += 1
-        for element in row:
-            
+        for element in row:            
             if element == "" or row_count <= 4 or "-" in element:
                 continue
             else:
-                
-                temp_data[element_count].append(float(element))
+                temp_data[element_count].append(element)
                 element_count += 1
         element_count = 0
-
     return temp_data
 
-
-print(file_interpret_csv('dataset2_full.csv'))
+if __name__ == "__main__":
+    main()
