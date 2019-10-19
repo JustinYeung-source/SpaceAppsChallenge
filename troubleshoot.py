@@ -1,4 +1,5 @@
-import statistics, fileopencsv
+import statistics
+from fileopencsv import *
 #attach the dataset, make it numeric
 #find the mean of the list
 #find median of the list
@@ -24,13 +25,13 @@ def anomalies(site_list):
         temp = []
         print(site_list[i], lower_bound, upper_bound, statistics.fmean(site_list), statistics.stdev(site_list))
         if site_list[i] < lower_bound or site_list[i] > upper_bound:
-            temp.append(fileopencsv.day(i))
-            temp.append(fileopencsv.hour(i))
+            temp.append(day(i))
+            temp.append(hour(i))
             anomaly_list.append(temp)
     return anomaly_list
 
 def main():
-    input_file_list = fileopencsv.fileopen_csv("dataset1.csv")
+    input_file_list = fileopen_csv("dataset1.csv")
     anom = anomalies(input_file_list[0])
     #print(input_file_list[0])
     print(anom)

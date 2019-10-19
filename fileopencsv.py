@@ -5,9 +5,10 @@ class Extract:
         self.longtitude = longitude
         self.latitude = latitude
         self.locname = locname
+        self.location = (locname, latitude, longitude)
 
-    def get_location(self, longitude, latitude, locname):
-        return (longitude, latitude, locname)
+    def get_location(self, location, latitude, longitude, locname):
+        return self.location
 
 def num_sites(n):
     if n <= 4:
