@@ -40,7 +40,9 @@ def fileopen_csv(filename):
         row_count += 1
         element_count = 0
 
-    print("first =", temp_data[0][1])
+    #print("first =", temp_data[0][1])
+    
+    # Create geo_list to hold regular statistics values
     geo_list = []
     geo_class_list = []
     first = True
@@ -48,15 +50,21 @@ def fileopen_csv(filename):
     
     for data in row2:
         i = 0
+        # skip over blanks and the first loop
         if(data == "" or first):
             first = False
             continue
         else:
+            # add all data that is not a blank
             geo_list.append(data)
+        
+        # once we have three values
         if(len(geo_list) == 3):
+            # create the class
             geo_class_list.append(GeoMagneticData(geo_list[0], geo_list[1], geo_list[2], num_index))
             geo_list = []
             for i in range(len(temp_data)):
+                # add statistical values to the class
                 geo_class_list[num_index].add(temp_data[num_index][i])
             num_index += 1
     return geo_class_list
