@@ -11,7 +11,7 @@ class Extract:
         return self.location
 
 def num_sites(n):
-    if n <= 4:
+    if (n <= 4):
         return 1
     return num_sites(n - 4) + 1
 
@@ -25,7 +25,28 @@ def hour(n):
         return n
     return hour(n - 24)
 
-def fileopen_csv(filename):
+def getrow_csv(filename):
+    input_csvfile = csv.reader(open(filename, "r"))
+
+    #ignore the header
+    for i in range (4):
+        next(input_csvfile)
+
+    row_list = []
+    #begin iteration through the csv
+    for row in input_csvfile:
+        temp = []
+        #create a temp list and append only values into the row
+        for element in row:
+            if(element == "" or "-" in element):
+                continue
+            else:
+                temp.append(float(element))
+        #append the temp list into the row list
+        row_list.append(temp)
+    return row_list
+
+def getcol_csv(filename):
     input_csvfile = csv.reader(open(filename, "r"))
 
     #remove the first 5 columns (1), read the amount of max(db/dt), that's our amount of lists
@@ -49,3 +70,4 @@ def fileopen_csv(filename):
 
 if __name__ == "__main__":
     main()
+
