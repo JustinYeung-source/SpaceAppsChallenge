@@ -17,8 +17,4 @@ def main():
 
 main()
 
-<<<<<<< Updated upstream
 #input_file_list[element_count].append(element);
-=======
-#temp_list[element_count].append(element);
->>>>>>> Stashed changes
