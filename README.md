@@ -1,4 +1,4 @@
-Magnetic field variations are never negative.
+﻿Magnetic field variations are never negative.
 
 
 
@@ -57,3 +57,38 @@ Algorithm:
 			§ hour of anomaly
 		○ Export as a csv file?
 			§ Map SITE IDs to latitude/longitudes
+
+
+Rozario: 
+Part 2:
+	Objective: Create a script to estimate the variation in magnetic field at a measurement site where the data is erroneous/lost
+	
+	Process: The files dataset2_full.txt (117 KB) and dataset2_holed.txt (116 KB) are available to participants for this challenge. 
+	The objective of the participants is to estimate the magnetic field variations for the missing site. They will be able to use the 
+	dataset2_full.txt dataset to measure the accuracy of different mapping methods.
+
+	Final product: Participants must submit a text file (.txt) containing the estimate of magnetic field variations over the given period 
+	as well as a visual representation of the geomagnetic mapping (image/video).
+
+	Required:
+		- The accuracy of their estimate
+		- The quality of the mapping (visual support)
+		- The originality and ingenuity of the method used.
+
+	
+	Ideas: 
+		1) Well obviously we must extract both datas from both csv files to compare both of them.
+			- So we need a get file content method
+		2) Once we have the file we will need to compare both to estimate the magnetic field variation.
+		   Will probably need to play around with it to get a good feel for the variations in the missing sites.
+			- compare the differences between data method
+		3) Once that is done we will need to create a visual representation probably with one of the resources that they provided.
+			- Create chart method
+
+	class':
+		Site:
+			- site Id
+			- list of Geomagnetic variation
+	NEEDED FUNCTIONS:
+		- find missing data. Return site id of which one
+		- get estimate go through the data 
