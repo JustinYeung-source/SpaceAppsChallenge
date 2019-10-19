@@ -18,11 +18,13 @@ def num_sites(n):
 
 def fileopen_csv(filename):
     input_csvfile = csv.reader(open(filename, "r"))
-    #how to make this more robust, each row is a multiple of 4
-    #remove the first 4 columns (1), read the amount of max(db/dt), that's our amount of lists
+
+    #remove the first 5 columns (1), read the amount of max(db/dt), that's our amount of lists
     row1 = next(input_csvfile)
     temp_data = [[] for _ in range(num_sites(len(row1) - 5))]
 
+    #iterate through the list, removing elements that don't match the criteria and adding them to their
+    #respective list
     row_count = 0
     element_count = 0
     for row in input_csvfile:
@@ -31,10 +33,10 @@ def fileopen_csv(filename):
             if element == "" or row_count <= 4 or "-" in element:
                 continue
             else:
-                
                 temp_data[element_count].append(element)
                 element_count += 1
         element_count = 0
     return temp_data
+
 if __name__ == "__main__":
     main()
