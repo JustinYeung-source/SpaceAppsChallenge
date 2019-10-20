@@ -6,6 +6,18 @@ def num_sites(n):
         return 1
     return num_sites(n - 4) + 1
 
+def day(n):
+    if (n < 24):
+        return 1
+    return 1 + day(n - 24)
+
+def hour(n):
+    if n == 0:
+        return 1
+    if (n < 24):
+        return n + 1
+    return hour(n - 24)
+
 def get_column_csv(filename):  
     input_csvfile = csv.reader(open(filename, "r"))
     row1 = next(input_csvfile)
@@ -61,8 +73,6 @@ def headers(filename):
                 # add statistical values to the class
                 geo_class_list[num_index].add(temp_data[num_index][i])
             num_index += 1
-    for data in geo_class_list:
-        print(data.getData())
     return geo_class_list
 
 def get_row_csv(filename):
@@ -89,14 +99,15 @@ def get_row_csv(filename):
 def export_csv_file(header,data_set,filename):
     new_file = open(filename, "w")
 
-    
+    new_file.write(",")
     for index in range(len(header)):
         new_file.write(str(header[index]))
 
     new_file.write("\n")
     for index in range(len(data_set)):
         for element in range(len(data_set[index])):
-            new_file.write("%f," % data_set[index][element])
+            new_file.write(str(data_set[index][element]))
+            new_file.write(",")
         new_file.write("\n")
     new_file.close()
 

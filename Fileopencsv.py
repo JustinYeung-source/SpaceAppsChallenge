@@ -21,8 +21,10 @@ def day(n):
     return 1 + day(n - 24)
 
 def hour(n):
+    if n == 0:
+        return 1
     if (n < 24):
-        return n
+        return n + 1
     return hour(n - 24)
 
 def getrow_csv(filename):
