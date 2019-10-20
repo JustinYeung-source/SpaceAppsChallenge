@@ -1,5 +1,5 @@
 from GeoMagneticData import *
-import DataHandler, Compute_data, fileopencsv, troubleshoot
+import Compute_data, fileopencsv, troubleshoot
 
 def main():
     data_BY_COLUMN = fileopencsv.get_column_csv("dataset1.csv")
@@ -27,9 +27,11 @@ def main():
     UPPERBOUND = (MEAN + STDEV) 
     LOWERBOUND = (MEAN - STDEV)
     '''
-    main_anomalies = troubleshoot.make_row_anomalies("dataset1.csv", 2.5)
+    main_anomalies = troubleshoot.make_row_anomalies("dataset1.csv", 2)
     fileopencsv.export_csv_file(header_tags,main_anomalies,"test.csv") #THIS JUST EXPORTS TO A CSV FILE USING "," AS DELIMITERS
 
-    main_anoms_prob = troubleshoot.make_row_anom_prob("dataset1.csv", 2.5)
+    main_anoms_prob = troubleshoot.make_row_anom_prob("dataset1.csv", 2)
     fileopencsv.export_csv_file(header_tags,main_anoms_prob,"test_prob.csv") #THIS JUST EXPORTS TO A CSV FILE USING "," AS DELIMITERS
+
+    fileopencsv.export_csv_file(header_tags,data_BY_ROW,"full.csv")
 main()
