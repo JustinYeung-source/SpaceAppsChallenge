@@ -2,7 +2,6 @@ import csv
 
 class GeoMagneticData():
 
-
     def __init__(self, location, longitude, latitude, dataIndex):
         self._location = location
         self._longtitude = longitude
@@ -35,4 +34,3 @@ class GeoMagneticData():
 
     def __str__(self):
         return self._location + " (" + self._longtitude + " " + self._latitude + "), "
-

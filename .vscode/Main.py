@@ -20,20 +20,13 @@ def main():
 
     data_wout_outliers_C = Compute_data.remove_outliers(data_BY_COLUMN, MEAN_data_C) #ORGANIZED BY COLUMNS DENOTED BY (C)
     data_just_outliers_C = Compute_data.just_outliers(data_BY_COLUMN, MEAN_data_C)   #ORGANIZED BY COLUMNS DENOTED BY (C)
- 
+
     header_tags = fileopencsv.headers("dataset1.csv") #THIS IS JUST LOCATION NAME: + (LONGITUDE LATITUDE)
-    
     '''
     MAIN_ANOMALIES IS CALCUATED USING IQR: 
     UPPERBOUND = (MEAN + STDEV) 
     LOWERBOUND = (MEAN - STDEV)
     '''
     main_anomalies = troubleshoot.make_row_anomalies("dataset1.csv")
-
-
-    fileopencsv.export_csv_file(header_tags,mra,"test.csv") #THIS JUST EXPORTS TO A CSV FILE USING "," AS DELIMETERS
-    
-
-    
+    fileopencsv.export_csv_file(header_tags,main_anomalies,"test.csv") #THIS JUST EXPORTS TO A CSV FILE USING "," AS DELIMITERS
 main()
-
