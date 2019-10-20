@@ -11,7 +11,7 @@ class GeoMagneticData():
         self._dataIndex = dataIndex
 
     def __repr__(self):
-        return "Location: " + self._location + "\n(" + self._longtitude + ", " + self._latitude + ")\n"
+        return self._location + " (" + self._longtitude + " " + self._latitude + "), "
 
     def add(self, data):
         self._data.append(data)
@@ -32,5 +32,5 @@ class GeoMagneticData():
         return self._dataIndex
 
     def __str__(self):
-        return "Location: " + self._location + "\n(" + self._longtitude + ", " + self._latitude + ")"
+        return self._location + " (" + self._longtitude + " " + self._latitude + "), "
 

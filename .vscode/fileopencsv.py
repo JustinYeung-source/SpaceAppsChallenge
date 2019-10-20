@@ -1,47 +1,41 @@
 import csv
 from GeoMagneticData import *
 
-
-class Data:
-    def __init__(self, longitude, latitude, maxMag, date):
-        self.date = date
-        self.longtitude = longitude
-        self.latitude = latitude
-        self.maxMag = maxMag
-
-def main():
-    input_file_list = fileopen_csv("dataset1.csv")
-    #print(input_file_list)
-
 def num_sites(n):
     if n <= 4:
         return 1
     return num_sites(n - 4) + 1
 
-def fileopen_csv(filename):
+def get_column_csv(filename):  
     input_csvfile = csv.reader(open(filename, "r"))
-    #remove the first 5 columns (1), read the amount of max(db/dt), that's our amount of lists
     row1 = next(input_csvfile)
-    row2 = next(input_csvfile)
-    temp_data = [[] for _ in range(num_sites(len(row1) - 5))]
-    
-    #iterate through the list, removing elements that don't match the criteria and adding them to their
-    #respective list
+
+    temp_list = [[] for _ in range(num_sites(len(row1) - 5))]
+
     row_count = 0
     element_count = 0
+
     for row in input_csvfile:
-        for element in row: 
-            if element == "" or row_count < 2 or "-" in element:
+        for element in row:
+            
+            if element == "" or row_count < 3 or "-" in element:
                 continue
             else:
-                temp_data[element_count].append(float(element))
+                
+                temp_list[element_count].append(float(element))
                 element_count += 1
-        
         row_count += 1
         element_count = 0
 
-    #print("first =", temp_data[0][1])
+    return temp_list
     
+def headers(filename):
+    input_csvfile = csv.reader(open(filename, "r"))
+    next(input_csvfile)
+    row2 = next(input_csvfile)
+
+    temp_data = get_column_csv(filename)
+
     # Create geo_list to hold regular statistics values
     geo_list = []
     geo_class_list = []
@@ -70,5 +64,38 @@ def fileopen_csv(filename):
 
     return geo_class_list
 
-if __name__ == "__main__":
-    main()
+def get_row_csv(filename):
+    input_csvfile = csv.reader(open(filename, "r"))
+
+    #ignore the header
+    for i in range(4):
+        next(input_csvfile)
+
+    row_list = []
+    #begin iteration through the csv
+    for row in input_csvfile:
+        temp = []
+        #create a temp list and append only values into the row
+        for element in row:
+            if(element == "" or "-" in element):
+                continue
+            else:
+                temp.append(float(element))
+        #append the temp list into the row list
+        row_list.append(temp)
+    return row_list
+
+def export_csv_file(header,data_set,filename):
+    new_file = open(filename, "w")
+
+    
+    for index in range(len(header)):
+        new_file.write(str(header[index]))
+
+    new_file.write("\n")
+    for index in range(len(data_set)):
+        for element in range(len(data_set[index])):
+            new_file.write("%f," % data_set[index][element])
+        new_file.write("\n")
+    new_file.close()
+
