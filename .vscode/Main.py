@@ -29,4 +29,7 @@ def main():
     '''
     main_anomalies = troubleshoot.make_row_anomalies("dataset1.csv", 2.5)
     fileopencsv.export_csv_file(header_tags,main_anomalies,"test.csv") #THIS JUST EXPORTS TO A CSV FILE USING "," AS DELIMITERS
+
+    main_anoms_prob = troubleshoot.make_row_anom_prob("dataset1.csv", 2.5)
+    fileopencsv.export_csv_file(header_tags,main_anoms_prob,"test_prob.csv") #THIS JUST EXPORTS TO A CSV FILE USING "," AS DELIMITERS
 main()
