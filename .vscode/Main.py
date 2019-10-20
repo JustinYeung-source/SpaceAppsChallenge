@@ -27,6 +27,6 @@ def main():
     UPPERBOUND = (MEAN + STDEV) 
     LOWERBOUND = (MEAN - STDEV)
     '''
-    main_anomalies = troubleshoot.make_row_anomalies("dataset1.csv")
+    main_anomalies = troubleshoot.make_row_anomalies("dataset1.csv", 2.5)
     fileopencsv.export_csv_file(header_tags,main_anomalies,"test.csv") #THIS JUST EXPORTS TO A CSV FILE USING "," AS DELIMITERS
 main()
