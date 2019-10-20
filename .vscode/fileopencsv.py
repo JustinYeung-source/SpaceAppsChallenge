@@ -11,7 +11,7 @@ class Data:
 
 def main():
     input_file_list = fileopen_csv("dataset1.csv")
-    #print(input_file_list)
+    print(input_file_list)
 
 def num_sites(n):
     if n <= 4:
@@ -67,7 +67,8 @@ def fileopen_csv(filename):
                 # add statistical values to the class
                 geo_class_list[num_index].add(temp_data[num_index][i])
             num_index += 1
-
+    for data in geo_class_list:
+        print(data.getData())
     return geo_class_list
 
 if __name__ == "__main__":
