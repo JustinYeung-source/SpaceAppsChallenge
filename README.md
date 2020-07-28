@@ -2,25 +2,25 @@
 
 
 
-For Part 1
-	• Organize by latitude/longitude (probably through mapping)
-	• Compare each of them, check for anomalies.
-	• Need location, time, and, reliability of data
+#### For Part 1 \
+>	• Organize by latitude/longitude (probably through mapping) \
+>	• Compare each of them, check for anomalies. \ 
+>	• Need location, time, and, reliability of data \
 
-Objective 1:
-	• Create a script that identifies parasitic geomagnetic activity and assigns a degree of reliability based on a suggested value to the erroneous data.
+#### Objective 1: \
+>	• Create a script that identifies parasitic geomagnetic activity and assigns a degree of reliability based on a suggested value to the erroneous data.
 
-Process 1: 
-	• The dataset1 is provided. It contains magnetic variation data from 26 measurement sites over 31 days in one-hour increments. Participants must create a script that reports the falsified data in a report.
+#### Process 1: \
+>	• The dataset1 is provided. It contains magnetic variation data from 26 measurement sites over 31 days in one-hour increments. Participants must create a script that reports the falsified data in a report.
 
-Final Product 1:
-	• Participants must present their report of the data deemed geomagnetically implausible, including location, time (DD-HH) and reliability of the aforementioned measurement. The format of this report is left to the discretion of the participants.
-	• Required:
-		○ Number of actual error predictions
-		○ The degree of reliability attributed to errors/ The suggestion for error replacement
-		○ Ease of understanding and the use of the minutes
-		○ Accessibility of the report format.
-			§ Report format must contain a dataset of the sites in which there was an anomaly, and the date (DD/HH) and the reliability of the measurement.
+#### Final Product 1: \
+>	• Participants must present their report of the data deemed geomagnetically implausible, including location, time (DD-HH) and reliability of the aforementioned measurement. The format of this report is left to the discretion of the participants.
+>	• Required:
+>>		○ Number of actual error predictions
+>>		○ The degree of reliability attributed to errors/ The suggestion for error replacement
+>>		○ Ease of understanding and the use of the minutes
+>>		○ Accessibility of the report format.
+>>>			§ Report format must contain a dataset of the sites in which there was an anomaly, and the date (DD/HH) and the reliability of the measurement.
 
 Algorithm:
 	• Background: 
